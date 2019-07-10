@@ -44,5 +44,10 @@ public class Hooks {
 		
 		wdf.quitDriver();
 	}
+	
+	public static ExtentTest getExtentTest() {
+		
+		return extentTest;
+	}
 
 }

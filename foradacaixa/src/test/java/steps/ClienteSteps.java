@@ -4,6 +4,7 @@ import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.E;
 import cucumber.api.java.pt.Quando;
 import funcionalidades.ClienteFuncionalidade;
+import utils.Screenshot;
 import cucumber.api.java.pt.Entao;
 
 public class ClienteSteps {
@@ -27,6 +28,7 @@ public class ClienteSteps {
 	public void informarDadosPessoa() {
 		
 		clienteFuncionalidade.informarDadosPessoa();
+		Screenshot.logPrint("Dados de identificação: ");
 	}
 	
 	@E("clico em avancar")
