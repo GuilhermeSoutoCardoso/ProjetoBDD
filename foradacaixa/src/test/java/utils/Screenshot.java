@@ -21,7 +21,8 @@ public class Screenshot {
 		try {
 			
 			efetuarPrintTela(log);
-			extentTest.log(Status.INFO, log, MediaEntityBuilder.createScreenCaptureFromPath("screenshot.png").build());
+			extentTest.log(Status.INFO, log, 
+					MediaEntityBuilder.createScreenCaptureFromPath(System.getProperty("user.dir") + "./src/test/resources/reports/print.jpg").build());
 		}
 		catch(Exception e) {
 			
@@ -37,7 +38,7 @@ public class Screenshot {
 		File file = ((TakesScreenshot) wdf.getWebDriver()).getScreenshotAs(OutputType.FILE);
 		try {
 			
-			FileUtils.copyFile(file, new File("./src/test/resources/reports/print.jpeg"));
+			FileUtils.copyFile(file, new File(System.getProperty("user.dir") + "./src/test/resources/reports/print.png"));
 		} 
 		catch (IOException e) {
 			
