@@ -4,10 +4,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
-
+import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
+
 import readers.Config;
 import utils.WebDriverFactory;
 
@@ -20,7 +22,7 @@ public class Hooks {
 	WebDriverFactory wdf = new WebDriverFactory();
 	
 	@Before("@GoogleChrome")
-	public void setGoogleChromeDriver() throws Exception {
+	public void setGoogleChromeDriver(Scenario cenario) throws Exception {
 		
 		if(extentReports == null) {
 			
@@ -29,15 +31,16 @@ public class Hooks {
 			extentReports.attachReporter(htmlReporter);
 		}
 		
-		//TODO
-		//extentTest = extentReports.createTest();
+		extentTest = extentReports.createTest(cenario.getId());
 		
 		System.setProperty("webdriver.chrome.driver", Config.getProperty("driver"));
 		wdf.setNavegador(new ChromeDriver());
 	}
 	
 	@After
-	public void finalizaDrivers() {
+	public void finalizaDrivers(Scenario cenario) {
+		extentTest.log(Status.PASS, "Cenário " + cenario.getName() + " executado com sucesso!");
+		extentReports.flush();
 		
 		wdf.quitDriver();
 	}

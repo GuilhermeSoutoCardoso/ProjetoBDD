@@ -2,7 +2,7 @@
 #encoding: iso-8859-1
 
 @GoogleChrome
-Funcionalidade: Cadastro de Cliente
+Funcionalidade: Cadastro de Clientes
 
   @login
   Cenario: Inserir cliente pessoa fisica
