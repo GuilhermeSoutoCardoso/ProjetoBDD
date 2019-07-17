@@ -11,6 +11,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 
+import readers.Config;
 import run.Hooks;
 
 public class Screenshot {
@@ -22,7 +23,7 @@ public class Screenshot {
 			
 			efetuarPrintTela(log);
 			extentTest.log(Status.INFO, log, 
-					MediaEntityBuilder.createScreenCaptureFromPath(System.getProperty("user.dir") + "./src/test/resources/reports/print.jpg").build());
+					MediaEntityBuilder.createScreenCaptureFromPath(System.getProperty("user.dir") + Config.getProperty("prints")).build());
 		}
 		catch(Exception e) {
 			
@@ -38,7 +39,7 @@ public class Screenshot {
 		File file = ((TakesScreenshot) wdf.getWebDriver()).getScreenshotAs(OutputType.FILE);
 		try {
 			
-			FileUtils.copyFile(file, new File(System.getProperty("user.dir") + "./src/test/resources/reports/print.png"));
+			FileUtils.copyFile(file, new File(System.getProperty("user.dir") + Config.getProperty("prints")));
 		} 
 		catch (IOException e) {
 			

@@ -28,7 +28,7 @@ public class ClienteSteps {
 	public void informarDadosPessoa() {
 		
 		clienteFuncionalidade.informarDadosPessoa();
-		Screenshot.logPrint("Dados de identificação: ");
+		Screenshot.logPrint("Dados de identificaÃ§Ã£o: ");
 	}
 	
 	@E("clico em avancar")

@@ -1,5 +1,5 @@
 #language: pt
-#encoding: iso-8859-1
+#encoding: utf-8
 
 @GoogleChrome
 Funcionalidade: Cadastro de Clientes

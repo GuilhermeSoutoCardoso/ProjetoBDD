@@ -27,19 +27,19 @@ public class Hooks {
 		if(extentReports == null) {
 			
 			extentReports = new ExtentReports();
-			htmlReporter = new ExtentHtmlReporter("./src/test/resources/reports/htmlReporter.html");
+			htmlReporter = new ExtentHtmlReporter(Config.getProperty("reports"));
 			extentReports.attachReporter(htmlReporter);
 		}
 		
 		extentTest = extentReports.createTest(cenario.getId());
 		
-		System.setProperty("webdriver.chrome.driver", Config.getProperty("driver"));
+		System.setProperty("webdriver.chrome.driver", Config.getProperty("drivers"));
 		wdf.setNavegador(new ChromeDriver());
 	}
 	
 	@After
 	public void finalizaDrivers(Scenario cenario) {
-		extentTest.log(Status.PASS, "Cen·rio " + cenario.getName() + " executado com sucesso!");
+		extentTest.log(Status.PASS, "Cen√°rio " + cenario.getName() + " executado com sucesso!");
 		extentReports.flush();
 		
 		wdf.quitDriver();
