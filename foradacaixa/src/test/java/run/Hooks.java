@@ -1,5 +1,7 @@
 package run;
 
+import java.io.File;
+
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -27,7 +29,8 @@ public class Hooks {
 		if(extentReports == null) {
 			
 			extentReports = new ExtentReports();
-			htmlReporter = new ExtentHtmlReporter(Config.getProperty("reports"));
+			htmlReporter = new ExtentHtmlReporter(Config.getProperty("reports.dir"));
+			htmlReporter.loadXMLConfig(new File(Config.getProperty("reports.config")));
 			extentReports.attachReporter(htmlReporter);
 		}
 		
@@ -39,7 +42,8 @@ public class Hooks {
 	
 	@After
 	public void finalizaDrivers(Scenario cenario) {
-		extentTest.log(Status.PASS, "Cenário " + cenario.getName() + " executado com sucesso!");
+		
+		extentTest.log(Status.PASS, "Cenário: " + "\"" + cenario.getName() + "\"" + " executado com sucesso!");
 		extentReports.flush();
 		
 		wdf.quitDriver();

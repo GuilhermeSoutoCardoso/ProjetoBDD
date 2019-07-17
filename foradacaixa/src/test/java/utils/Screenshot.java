@@ -19,6 +19,7 @@ public class Screenshot {
 	public static void logPrint(String log) {
 		
 		ExtentTest extentTest = Hooks.getExtentTest();
+		
 		try {
 			
 			efetuarPrintTela(log);
@@ -37,6 +38,7 @@ public class Screenshot {
 		WebDriverFactory wdf = new WebDriverFactory();
 		
 		File file = ((TakesScreenshot) wdf.getWebDriver()).getScreenshotAs(OutputType.FILE);
+		
 		try {
 			
 			FileUtils.copyFile(file, new File(System.getProperty("user.dir") + Config.getProperty("prints")));

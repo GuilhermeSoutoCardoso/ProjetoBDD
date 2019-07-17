@@ -32,22 +32,22 @@ public class ClienteFuncionalidade extends ClientePage {
 
 	public void informarEnderecos() {
 		
-		enderecoPage.setCepPrincipal(Config.getProperty("endereco.cep"));
-		enderecoPage.setEnderecoPrincipal(Config.getProperty("endereco.endereco"));
-		enderecoPage.setNumeroPrincipal(Config.getProperty("endereco.numero"));
-		enderecoPage.setComplementoPrincipal(Config.getProperty("endereco.complemento"));
-		enderecoPage.setCidadePrincipal(Config.getProperty("endereco.cidade"));
-		enderecoPage.setEstadoPrincipal(Config.getProperty("endereco.estado"));
-		enderecoPage.setTelefonePrincipal(Config.getProperty("endereco.telefone"));
-		enderecoPage.setCelularPrincipal(Config.getProperty("endereco.celular"));		
-		enderecoPage.setCepCobranca(Config.getProperty("endereco.cep"));
-		enderecoPage.setEnderecoCobranca(Config.getProperty("endereco.endereco"));
-		enderecoPage.setNumeroCobranca(Config.getProperty("endereco.numero"));
-		enderecoPage.setComplementoCobranca(Config.getProperty("endereco.complemento"));
-		enderecoPage.setCidadeCobranca(Config.getProperty("endereco.cidade"));
-		enderecoPage.setEstadoCobranca(Config.getProperty("endereco.estado"));
-		enderecoPage.setTelefoneCobranca(Config.getProperty("endereco.telefone"));
-		enderecoPage.setCelularCobranca(Config.getProperty("endereco.celular"));
+		enderecoPage.setCepPrincipal(Config.getProperty("endereco.principal.cep"));
+		enderecoPage.setEnderecoPrincipal(Config.getProperty("endereco.principal.endereco"));
+		enderecoPage.setNumeroPrincipal(Config.getProperty("endereco.principal.numero"));
+		enderecoPage.setComplementoPrincipal(Config.getProperty("endereco.principal.complemento"));
+		enderecoPage.setCidadePrincipal(Config.getProperty("endereco.principal.cidade"));
+		enderecoPage.setEstadoPrincipal(Config.getProperty("endereco.principal.estado"));
+		enderecoPage.setTelefonePrincipal(Config.getProperty("endereco.principal.telefone"));
+		enderecoPage.setCelularPrincipal(Config.getProperty("endereco.principal.celular"));		
+		enderecoPage.setCepCobranca(Config.getProperty("endereco.cobranca.cep"));
+		enderecoPage.setEnderecoCobranca(Config.getProperty("endereco.cobranca.endereco"));
+		enderecoPage.setNumeroCobranca(Config.getProperty("endereco.cobranca.numero"));
+		enderecoPage.setComplementoCobranca(Config.getProperty("endereco.cobranca.complemento"));
+		enderecoPage.setCidadeCobranca(Config.getProperty("endereco.cobranca.cidade"));
+		enderecoPage.setEstadoCobranca(Config.getProperty("endereco.cobranca.estado"));
+		enderecoPage.setTelefoneCobranca(Config.getProperty("endereco.cobranca.telefone"));
+		enderecoPage.setCelularCobranca(Config.getProperty("endereco.cobranca.celular"));
 	}
 
 	public void clicarSalvar() {
@@ -55,9 +55,22 @@ public class ClienteFuncionalidade extends ClientePage {
 		enderecoPage.setSalvar();
 	}
 
-	public void validarMsg() {
+	public boolean validarMsg() {
 		
-		//TODO
+		boolean flag = true;
+		
+		try {
+			enderecoPage.getMsgSucesso();
+			System.out.println("\nMsg: Cliente cadastrado com sucesso - PASSOU!\n");
+			flag = true;
+			
+		} catch(Exception e) {
+			
+			System.out.println("\nMsg: Cliente cadastrado com sucesso - FALHOU!\n");
+			flag = false;
+			e.printStackTrace();
+		}
+		return flag;
 	}
 
 }

@@ -27,6 +27,7 @@ public class EnderecoPage {
 	public final static String XPATH_TELEFONE_COBRANCA = "//input[@id='endc_telefone']";
 	public final static String XPATH_CELULAR_COBRANCA = "//input[@id='endc_celular']";
 	public final static String XPATH_SALVAR = "//input[@id='salvar']";
+	public final static String XPATH_MSG_SUCESSO = "//label[@id='mensagem']";
 	
 	public WebElement getCepPrincipal() {
 		
@@ -196,6 +197,11 @@ public class EnderecoPage {
 	public void setSalvar() {
 		
 		getSalvar().click();
+	}
+	
+	public WebElement getMsgSucesso() {
+		
+		return wdf.getWebDriver().findElement(By.xpath(XPATH_MSG_SUCESSO));
 	}
 
 }

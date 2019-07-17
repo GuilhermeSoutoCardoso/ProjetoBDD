@@ -28,7 +28,6 @@ public class ClienteSteps {
 	public void informarDadosPessoa() {
 		
 		clienteFuncionalidade.informarDadosPessoa();
-		Screenshot.logPrint("Dados de identificação: ");
 	}
 	
 	@E("clico em avancar")
@@ -52,6 +51,7 @@ public class ClienteSteps {
 	@Entao("eu valido a mensagem de sucesso")
 	public void validarMensagemSucesso() {
 		
+		Screenshot.logPrint("Mensagem de Cliente Cadastrado com Sucesso: ");
 		clienteFuncionalidade.validarMsg();
 	}
 	
