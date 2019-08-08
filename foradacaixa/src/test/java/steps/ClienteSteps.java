@@ -4,7 +4,6 @@ import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.E;
 import cucumber.api.java.pt.Quando;
 import funcionalidades.ClienteFuncionalidade;
-import utils.Screenshot;
 import cucumber.api.java.pt.Entao;
 
 public class ClienteSteps {
@@ -51,7 +50,6 @@ public class ClienteSteps {
 	@Entao("eu valido a mensagem de sucesso")
 	public void validarMensagemSucesso() {
 		
-		Screenshot.logPrint("Mensagem de Cliente Cadastrado com Sucesso: ");
 		clienteFuncionalidade.validarMsg();
 	}
 	

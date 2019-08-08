@@ -9,7 +9,7 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		features = "./src/test/resources/features/Cliente.feature",
 		glue = { "" },
-		tags = {"@GoogleChrome"},
+		tags = {"@login"},
 		monochrome = true,
 		dryRun = false
 		)

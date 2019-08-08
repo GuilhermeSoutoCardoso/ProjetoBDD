@@ -13,6 +13,7 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 
 import readers.Config;
+import utils.Screenshot;
 import utils.WebDriverFactory;
 
 public class Hooks {
@@ -31,6 +32,8 @@ public class Hooks {
 			extentReports = new ExtentReports();
 			htmlReporter = new ExtentHtmlReporter(Config.getProperty("reports.dir"));
 			htmlReporter.loadXMLConfig(new File(Config.getProperty("reports.config")));
+			extentReports.setSystemInfo("User Name: ", System.getProperty("user.name"));
+			extentReports.setSystemInfo("Time Zone: ", System.getProperty("user.timezone"));
 			extentReports.attachReporter(htmlReporter);
 		}
 		
@@ -43,7 +46,18 @@ public class Hooks {
 	@After
 	public void finalizaDrivers(Scenario cenario) {
 		
-		extentTest.log(Status.PASS, "Cenário: " + "\"" + cenario.getName() + "\"" + " executado com sucesso!");
+		if(cenario.isFailed()) {
+			
+			Screenshot.logPrint("Teste Falhou: ");
+			Screenshot.efetuarPrintTela("Erro: ");
+			extentTest.log(Status.FAIL, "Cenário: " + "\"" + cenario.getName() + "\"" + " executado com falha!");
+		} else {
+			
+			Screenshot.logPrint("Teste Passou: ");
+			Screenshot.efetuarPrintTela("Print: ");
+			extentTest.log(Status.PASS, "Cenário: " + "\"" + cenario.getName() + "\"" + " executado com sucesso!");
+		}
+		
 		extentReports.flush();
 		
 		wdf.quitDriver();

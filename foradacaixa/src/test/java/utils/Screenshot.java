@@ -33,7 +33,7 @@ public class Screenshot {
 		
 	}
 	
-	private static void efetuarPrintTela(String log) {
+	public static void efetuarPrintTela(String log) {
 		
 		WebDriverFactory wdf = new WebDriverFactory();
 		
